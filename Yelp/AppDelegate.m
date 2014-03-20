@@ -7,15 +7,17 @@
 //
 
 #import "AppDelegate.h"
+#import "SearchListViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    SearchListViewController *svc = [[SearchListViewController alloc] init];
+    UINavigationController *unc = [[UINavigationController alloc] initWithRootViewController:svc];
+    self.window.rootViewController = unc;
     return YES;
 }
 

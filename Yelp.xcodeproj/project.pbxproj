@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C178996B7D9447D92EAEF5F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9326F23FDBC14173B2682ED0 /* libPods.a */; };
 		FDED6ACB18DB82D7009B1DCB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDED6ACA18DB82D7009B1DCB /* Foundation.framework */; };
 		FDED6ACD18DB82D7009B1DCB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDED6ACC18DB82D7009B1DCB /* CoreGraphics.framework */; };
 		FDED6ACF18DB82D7009B1DCB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDED6ACE18DB82D7009B1DCB /* UIKit.framework */; };
@@ -18,6 +19,10 @@
 		FDED6AE518DB82D7009B1DCB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDED6ACA18DB82D7009B1DCB /* Foundation.framework */; };
 		FDED6AE618DB82D7009B1DCB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDED6ACE18DB82D7009B1DCB /* UIKit.framework */; };
 		FDED6AFA18DB8352009B1DCB /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FDED6AF918DB8352009B1DCB /* .gitignore */; };
+		FDED6AFF18DB9332009B1DCB /* SearchListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDED6AFD18DB9332009B1DCB /* SearchListViewController.m */; };
+		FDED6B0018DB9332009B1DCB /* SearchListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDED6AFE18DB9332009B1DCB /* SearchListViewController.xib */; };
+		FDED6B0A18DB970F009B1DCB /* SearchItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FDED6B0818DB970F009B1DCB /* SearchItemCell.m */; };
+		FDED6B0B18DB970F009B1DCB /* SearchItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDED6B0918DB970F009B1DCB /* SearchItemCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3AE349BE5EF94D3CBD7D1755 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		9326F23FDBC14173B2682ED0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDED6AC718DB82D7009B1DCB /* Yelp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yelp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDED6ACA18DB82D7009B1DCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FDED6ACC18DB82D7009B1DCB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -45,6 +52,12 @@
 		FDED6AE218DB82D7009B1DCB /* YelpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YelpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDED6AE318DB82D7009B1DCB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		FDED6AF918DB8352009B1DCB /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		FDED6AFC18DB9332009B1DCB /* SearchListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchListViewController.h; sourceTree = "<group>"; };
+		FDED6AFD18DB9332009B1DCB /* SearchListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchListViewController.m; sourceTree = "<group>"; };
+		FDED6AFE18DB9332009B1DCB /* SearchListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchListViewController.xib; sourceTree = "<group>"; };
+		FDED6B0718DB970F009B1DCB /* SearchItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchItemCell.h; sourceTree = "<group>"; };
+		FDED6B0818DB970F009B1DCB /* SearchItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchItemCell.m; sourceTree = "<group>"; };
+		FDED6B0918DB970F009B1DCB /* SearchItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchItemCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +68,7 @@
 				FDED6ACD18DB82D7009B1DCB /* CoreGraphics.framework in Frameworks */,
 				FDED6ACF18DB82D7009B1DCB /* UIKit.framework in Frameworks */,
 				FDED6ACB18DB82D7009B1DCB /* Foundation.framework in Frameworks */,
+				6C178996B7D9447D92EAEF5F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +92,7 @@
 				FDED6AD018DB82D7009B1DCB /* Yelp */,
 				FDED6AC918DB82D7009B1DCB /* Frameworks */,
 				FDED6AC818DB82D7009B1DCB /* Products */,
+				3AE349BE5EF94D3CBD7D1755 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +112,7 @@
 				FDED6ACC18DB82D7009B1DCB /* CoreGraphics.framework */,
 				FDED6ACE18DB82D7009B1DCB /* UIKit.framework */,
 				FDED6AE318DB82D7009B1DCB /* XCTest.framework */,
+				9326F23FDBC14173B2682ED0 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -104,6 +120,8 @@
 		FDED6AD018DB82D7009B1DCB /* Yelp */ = {
 			isa = PBXGroup;
 			children = (
+				FDED6B0118DB965B009B1DCB /* Views */,
+				FDED6AFB18DB92D4009B1DCB /* Controllers */,
 				FDED6AD918DB82D7009B1DCB /* AppDelegate.h */,
 				FDED6ADA18DB82D7009B1DCB /* AppDelegate.m */,
 				FDED6ADC18DB82D7009B1DCB /* Images.xcassets */,
@@ -123,6 +141,26 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		FDED6AFB18DB92D4009B1DCB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FDED6AFC18DB9332009B1DCB /* SearchListViewController.h */,
+				FDED6AFD18DB9332009B1DCB /* SearchListViewController.m */,
+				FDED6AFE18DB9332009B1DCB /* SearchListViewController.xib */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		FDED6B0118DB965B009B1DCB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FDED6B0718DB970F009B1DCB /* SearchItemCell.h */,
+				FDED6B0818DB970F009B1DCB /* SearchItemCell.m */,
+				FDED6B0918DB970F009B1DCB /* SearchItemCell.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -130,9 +168,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FDED6AF318DB82D7009B1DCB /* Build configuration list for PBXNativeTarget "Yelp" */;
 			buildPhases = (
+				B1F5FEB9B6AB45B8BED4C7C7 /* Check Pods Manifest.lock */,
 				FDED6AC318DB82D7009B1DCB /* Sources */,
 				FDED6AC418DB82D7009B1DCB /* Frameworks */,
 				FDED6AC518DB82D7009B1DCB /* Resources */,
+				E4585ED4F23049D999ED3D9E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -200,6 +240,8 @@
 			files = (
 				FDED6AD518DB82D7009B1DCB /* InfoPlist.strings in Resources */,
 				FDED6AFA18DB8352009B1DCB /* .gitignore in Resources */,
+				FDED6B0018DB9332009B1DCB /* SearchListViewController.xib in Resources */,
+				FDED6B0B18DB970F009B1DCB /* SearchItemCell.xib in Resources */,
 				FDED6ADD18DB82D7009B1DCB /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,11 +255,46 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B1F5FEB9B6AB45B8BED4C7C7 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E4585ED4F23049D999ED3D9E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FDED6AC318DB82D7009B1DCB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDED6B0A18DB970F009B1DCB /* SearchItemCell.m in Sources */,
+				FDED6AFF18DB9332009B1DCB /* SearchListViewController.m in Sources */,
 				FDED6ADB18DB82D7009B1DCB /* AppDelegate.m in Sources */,
 				FDED6AD718DB82D7009B1DCB /* main.m in Sources */,
 			);
@@ -324,6 +401,7 @@
 		};
 		FDED6AF418DB82D7009B1DCB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3AE349BE5EF94D3CBD7D1755 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -337,6 +415,7 @@
 		};
 		FDED6AF518DB82D7009B1DCB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3AE349BE5EF94D3CBD7D1755 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SearchItem.h"
 
 @interface SearchItemCell : UITableViewCell
+@property (nonatomic, strong) SearchItem *searchItem;
 + (NSString *)cellIdentifier;
+- (void)setTitle:(NSString *)s;
+- (UILabel *)placeTitle;
 @end

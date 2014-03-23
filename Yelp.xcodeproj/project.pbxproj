@@ -23,6 +23,7 @@
 		FDED6B0018DB9332009B1DCB /* SearchListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDED6AFE18DB9332009B1DCB /* SearchListViewController.xib */; };
 		FDED6B0A18DB970F009B1DCB /* SearchItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FDED6B0818DB970F009B1DCB /* SearchItemCell.m */; };
 		FDED6B0B18DB970F009B1DCB /* SearchItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDED6B0918DB970F009B1DCB /* SearchItemCell.xib */; };
+		FDED6B0F18DBA26B009B1DCB /* SearchItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FDED6B0E18DBA26B009B1DCB /* SearchItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		FDED6B0718DB970F009B1DCB /* SearchItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchItemCell.h; sourceTree = "<group>"; };
 		FDED6B0818DB970F009B1DCB /* SearchItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchItemCell.m; sourceTree = "<group>"; };
 		FDED6B0918DB970F009B1DCB /* SearchItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchItemCell.xib; sourceTree = "<group>"; };
+		FDED6B0D18DBA26B009B1DCB /* SearchItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchItem.h; sourceTree = "<group>"; };
+		FDED6B0E18DBA26B009B1DCB /* SearchItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +123,7 @@
 		FDED6AD018DB82D7009B1DCB /* Yelp */ = {
 			isa = PBXGroup;
 			children = (
+				FDED6B0C18DBA25B009B1DCB /* Models */,
 				FDED6B0118DB965B009B1DCB /* Views */,
 				FDED6AFB18DB92D4009B1DCB /* Controllers */,
 				FDED6AD918DB82D7009B1DCB /* AppDelegate.h */,
@@ -159,6 +163,15 @@
 				FDED6B0918DB970F009B1DCB /* SearchItemCell.xib */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		FDED6B0C18DBA25B009B1DCB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FDED6B0D18DBA26B009B1DCB /* SearchItem.h */,
+				FDED6B0E18DBA26B009B1DCB /* SearchItem.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,6 +309,7 @@
 				FDED6B0A18DB970F009B1DCB /* SearchItemCell.m in Sources */,
 				FDED6AFF18DB9332009B1DCB /* SearchListViewController.m in Sources */,
 				FDED6ADB18DB82D7009B1DCB /* AppDelegate.m in Sources */,
+				FDED6B0F18DBA26B009B1DCB /* SearchItem.m in Sources */,
 				FDED6AD718DB82D7009B1DCB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

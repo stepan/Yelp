@@ -24,6 +24,7 @@
 		FDED6B0A18DB970F009B1DCB /* SearchItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FDED6B0818DB970F009B1DCB /* SearchItemCell.m */; };
 		FDED6B0B18DB970F009B1DCB /* SearchItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDED6B0918DB970F009B1DCB /* SearchItemCell.xib */; };
 		FDED6B0F18DBA26B009B1DCB /* SearchItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FDED6B0E18DBA26B009B1DCB /* SearchItem.m */; };
+		FDED6B1218DFA7A7009B1DCB /* YelpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FDED6B1118DFA7A7009B1DCB /* YelpClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		FDED6B0918DB970F009B1DCB /* SearchItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchItemCell.xib; sourceTree = "<group>"; };
 		FDED6B0D18DBA26B009B1DCB /* SearchItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchItem.h; sourceTree = "<group>"; };
 		FDED6B0E18DBA26B009B1DCB /* SearchItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchItem.m; sourceTree = "<group>"; };
+		FDED6B1018DFA7A7009B1DCB /* YelpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpClient.h; sourceTree = "<group>"; };
+		FDED6B1118DFA7A7009B1DCB /* YelpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +126,8 @@
 		FDED6AD018DB82D7009B1DCB /* Yelp */ = {
 			isa = PBXGroup;
 			children = (
+				FDED6B1018DFA7A7009B1DCB /* YelpClient.h */,
+				FDED6B1118DFA7A7009B1DCB /* YelpClient.m */,
 				FDED6B0C18DBA25B009B1DCB /* Models */,
 				FDED6B0118DB965B009B1DCB /* Views */,
 				FDED6AFB18DB92D4009B1DCB /* Controllers */,
@@ -308,6 +313,7 @@
 			files = (
 				FDED6B0A18DB970F009B1DCB /* SearchItemCell.m in Sources */,
 				FDED6AFF18DB9332009B1DCB /* SearchListViewController.m in Sources */,
+				FDED6B1218DFA7A7009B1DCB /* YelpClient.m in Sources */,
 				FDED6ADB18DB82D7009B1DCB /* AppDelegate.m in Sources */,
 				FDED6B0F18DBA26B009B1DCB /* SearchItem.m in Sources */,
 				FDED6AD718DB82D7009B1DCB /* main.m in Sources */,

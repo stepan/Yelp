@@ -7,11 +7,18 @@
 //
 #import "SearchListViewController.h"
 #import "SearchItemCell.h"
+#import "YelpClient.h"
+
+NSString * const kYelpConsumerKey = @"g7t7dDPZsBKhktjRXBQf_w";
+NSString * const kYelpConsumerSecret = @"RUpXsOoZZxbEc7XwehDeFmQRnJk";
+NSString * const kYelpToken = @"IbGkF61FZM5NQuWhr28MEs02tqD_8rNw";
+NSString * const kYelpTokenSecret = @"h7Azg-XLhEAnOzcveHMYr2z_N0g";
 
 @interface SearchListViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) SearchItemCell *prototypeCell;
 @property (nonatomic, strong) NSArray *searchItems;
+@property (nonatomic, strong) YelpClient *client;
 
 @end
 
@@ -22,6 +29,12 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"Yelp";
+        self.client = [[YelpClient alloc] initWithConsumerKey:kYelpConsumerKey consumerSecret:kYelpConsumerSecret accessToken:kYelpToken accessSecret:kYelpTokenSecret];
+        [self.client searchWithTerm:@"Thai" success:^(AFHTTPRequestOperation *operation, id response) {
+            NSLog(@"response: %@", response);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"error: %@", [error description]);
+        }];
     }
     return self;
 }

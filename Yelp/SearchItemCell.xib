@@ -117,6 +117,7 @@
                 <outlet property="itemNameLabel" destination="1ja-ga-ivD" id="7jR-8f-Dhe"/>
                 <outlet property="itemNumberOfReviewsLabel" destination="E86-Y3-RRG" id="bmx-DR-0lP"/>
                 <outlet property="itemPriceRangeLabel" destination="Fav-Mu-GRf" id="lzC-hw-jB1"/>
+                <outlet property="itemRatingsImage" destination="QcF-ar-9T1" id="5vb-Oa-XTe"/>
             </connections>
         </tableViewCell>
     </objects>

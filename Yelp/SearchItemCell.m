@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *itemPriceRangeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *itemAddressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *itemCategoriesLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *itemRatingsImage;
 
 @end
 
@@ -41,10 +42,7 @@
 - (void)setSearchItem:(SearchItem *)searchItem
 {
     _searchItem = searchItem;
-    self.itemNameLabel.text = @"Very very l";
-    NSURL *url = [[NSURL alloc] initWithString:@"http://s3-media2.ak.yelpcdn.com/bphoto/7DIHu8a0AHhw-BffrDIxPA/ms.jpg"];
-    [self.itemImage setImageWithURL:url];
-//    NSUInteger r = arc4random_uniform(16);
+    [self styleCell];
 }
 
 - (void)setTitle:(NSString *)s
@@ -55,5 +53,17 @@
 - (UILabel *)placeTitle
 {
     return self.itemNameLabel;
+}
+
+- (void)styleCell
+{
+    self.itemNameLabel.text = self.searchItem.name;
+    self.itemDistanceLabel.text = self.searchItem.distance;
+    self.itemNumberOfReviewsLabel.text = self.searchItem.numberOfReviews;
+    self.itemPriceRangeLabel.text = self.searchItem.priceRange;
+    self.itemAddressLabel.text = self.searchItem.address;
+    self.itemCategoriesLabel.text = self.searchItem.categories;
+    [self.itemImage setImageWithURL:self.searchItem.imageUrl];
+    [self.itemRatingsImage setImageWithURL:self.searchItem.ratingsUrl];
 }
 @end

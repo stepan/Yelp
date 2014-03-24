@@ -30,11 +30,6 @@ NSString * const kYelpTokenSecret = @"h7Azg-XLhEAnOzcveHMYr2z_N0g";
     if (self) {
         self.title = @"Yelp";
         self.client = [[YelpClient alloc] initWithConsumerKey:kYelpConsumerKey consumerSecret:kYelpConsumerSecret accessToken:kYelpToken accessSecret:kYelpTokenSecret];
-        [self.client searchWithTerm:@"Thai" success:^(AFHTTPRequestOperation *operation, id response) {
-            NSLog(@"response: %@", response);
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"error: %@", [error description]);
-        }];
     }
     return self;
 }
@@ -53,11 +48,32 @@ NSString * const kYelpTokenSecret = @"h7Azg-XLhEAnOzcveHMYr2z_N0g";
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.separatorInset = UIEdgeInsetsZero;
-    //self.tableView.rowHeight = 125;
     [self.tableView registerNib:[UINib nibWithNibName:@"SearchItemCell" bundle:nil] forCellReuseIdentifier:[SearchItemCell cellIdentifier]];
-    SearchItemCell *cell = [[SearchItemCell alloc] init];
-    NSLog(@"Blah Height: %f, Width: %f", cell.frame.size.height, cell.frame.size.width);
-    self.searchItems = @[@"This is a long titles", @"short title", @"This might be a really long title", @"This might be a really long title This might be a really long title"];
+    //self.searchItems = @[@"This is a long titles", @"short title", @"This might be a really long title", @"This might be a really long title This might be a really long title"];
+    
+    
+	UISearchBar *searchBar = [[UISearchBar alloc]
+                                 initWithFrame:CGRectMake(0.0f,0.0f,320.0f,0.0f)];
+	[searchBar sizeToFit];
+	self.navigationItem.titleView = searchBar;
+	self.navigationItem.titleView.autoresizingMask = UIViewAutoresizingNone;
+    
+    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    UIBarButtonItem *searchButton = [[UIBarButtonItem alloc] initWithTitle:@"Search" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    self.navigationItem.leftBarButtonItem = filterButton;
+    self.navigationItem.rightBarButtonItem = searchButton;
+    [self fetchData];
+}
+
+- (void)fetchData
+{
+    [self.client searchWithTerm:@"Thai" success:^(AFHTTPRequestOperation *operation, id response) {
+        //NSLog(@"response: %@", response);
+        self.searchItems = [SearchItem searchItemsWithObject:response];
+        [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error: %@", [error description]);
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -75,23 +91,18 @@ NSString * const kYelpTokenSecret = @"h7Azg-XLhEAnOzcveHMYr2z_N0g";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     SearchItemCell *cell = (SearchItemCell *) [tableView dequeueReusableCellWithIdentifier:[SearchItemCell cellIdentifier] forIndexPath:indexPath];
-    cell.searchItem = [[SearchItem alloc] init];
-    [cell setTitle:self.searchItems[indexPath.row]];
-    //NSLog(@"Cell: %f,%f", cell.frame.size.width, cell.frame.size.height);
+    cell.searchItem = self.searchItems[indexPath.row];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *s = self.searchItems[indexPath.row];
+    NSString *s = @"some string";
     UILabel *u = self.prototypeCell.placeTitle;
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:17], NSFontAttributeName,
                                 [NSParagraphStyle defaultParagraphStyle], NSParagraphStyleAttributeName,
                                 nil];
     CGRect r = [s boundingRectWithSize:CGSizeMake(137, 10000) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
-    NSLog(@"Height: %f, Width: %f", r.size.height, r.size.width);
-    SearchItemCell *cell = self.prototypeCell;
-    //NSLog(@"Cell: %f,%f", cell.frame.size.width, cell.frame.size.height);
-    return cell.frame.size.height - u.frame.size.height + ceil(r.size.height);
+    return self.prototypeCell.frame.size.height - u.frame.size.height + ceil(r.size.height);
 }
 @end

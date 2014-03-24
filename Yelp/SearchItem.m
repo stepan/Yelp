@@ -33,9 +33,18 @@
         self.categories = [NSString stringWithFormat:@"%@", self.dictionary[@"categories"]];
         self.categories = @"adsf";
         self.imageUrl = [[NSURL alloc] initWithString:self.dictionary[@"image_url"]];
-        self.ratingsUrl = [[NSURL alloc] initWithString:self.dictionary[@"rating_img_url_small"]];
+        self.ratingsUrl = [[NSURL alloc] initWithString:self.dictionary[@"rating_img_url_large"]];
     }
     return self;
 }
+- (CGFloat)extraHeight:(CGFloat)f
+{
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:17], NSFontAttributeName,
+                                [NSParagraphStyle defaultParagraphStyle], NSParagraphStyleAttributeName,
+                                nil];
+    CGRect r = [self.name boundingRectWithSize:CGSizeMake(137, 10000) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
+    return r.size.height - f;
+}
+
 
 @end

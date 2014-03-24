@@ -97,12 +97,7 @@ NSString * const kYelpTokenSecret = @"h7Azg-XLhEAnOzcveHMYr2z_N0g";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *s = @"some string";
-    UILabel *u = self.prototypeCell.placeTitle;
-    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:17], NSFontAttributeName,
-                                [NSParagraphStyle defaultParagraphStyle], NSParagraphStyleAttributeName,
-                                nil];
-    CGRect r = [s boundingRectWithSize:CGSizeMake(137, 10000) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
-    return self.prototypeCell.frame.size.height - u.frame.size.height + ceil(r.size.height);
+    SearchItem *item = self.searchItems[indexPath.row];
+    return self.prototypeCell.frame.size.height + ceil([item extraHeight:21]);
 }
 @end

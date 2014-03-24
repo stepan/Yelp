@@ -21,4 +21,5 @@
 @property (nonatomic, strong) NSURL *ratingsUrl;
 + (NSArray *) searchItemsWithObject:(id)object;
 - (id) initWithDictionary:(NSDictionary *)dictionary;
+- (CGFloat)extraHeight:(CGFloat)f;
 @end

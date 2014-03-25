@@ -21,6 +21,7 @@ NSString * const kYelpTokenSecret = @"h7Azg-XLhEAnOzcveHMYr2z_N0g";
 @property (nonatomic, strong) NSArray *searchItems;
 @property (nonatomic, strong) YelpClient *client;
 @property (nonatomic, strong) UINavigationController *fnc;
+@property (nonatomic, assign) CGSize intialVariableTextSize;
 @end
 
 @implementation SearchListViewController
@@ -39,6 +40,7 @@ NSString * const kYelpTokenSecret = @"h7Azg-XLhEAnOzcveHMYr2z_N0g";
 {
     if(!_prototypeCell){
         _prototypeCell = [self.tableView dequeueReusableCellWithIdentifier:[SearchItemCell cellIdentifier]];
+        self.intialVariableTextSize = [_prototypeCell initialLabelSize];
     }
     return _prototypeCell;
 }
@@ -109,7 +111,7 @@ NSString * const kYelpTokenSecret = @"h7Azg-XLhEAnOzcveHMYr2z_N0g";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SearchItem *item = self.searchItems[indexPath.row];
-    return self.prototypeCell.frame.size.height + ceil([item extraHeight:21]);
+    return self.prototypeCell.frame.size.height + ceil([item heightDifference:self.intialVariableTextSize]);
 }
 
 #pragma mark - Search Bar methods

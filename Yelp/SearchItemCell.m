@@ -64,4 +64,9 @@
     [self.itemImage setImageWithURL:self.searchItem.imageUrl];
     [self.itemRatingsImage setImageWithURL:self.searchItem.ratingsUrl];
 }
+
+- (CGSize)initialLabelSize
+{
+    return self.itemNameLabel.frame.size;
+}
 @end

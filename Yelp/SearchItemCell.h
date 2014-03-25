@@ -12,4 +12,5 @@
 @interface SearchItemCell : UITableViewCell
 @property (nonatomic, strong) SearchItem *searchItem;
 + (NSString *)cellIdentifier;
+- (CGSize)initialLabelSize;
 @end

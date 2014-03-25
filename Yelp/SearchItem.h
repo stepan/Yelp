@@ -20,5 +20,5 @@
 @property (nonatomic, assign) NSUInteger index;
 + (NSArray *) searchItemsWithObject:(id)object;
 - (id) initWithDictionary:(NSDictionary *)dictionary index:(NSUInteger)index;
-- (CGFloat)extraHeight:(CGFloat)f;
+- (CGFloat)heightDifference:(CGSize)size;
 @end

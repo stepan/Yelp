@@ -29,7 +29,7 @@
         self.dictionary = dictionary;
         self.name = [NSString stringWithFormat:@"%lu. %@", (unsigned long)self.index, self.dictionary[@"name"]];
         self.numberOfReviews = [NSString stringWithFormat:@"%@ Reviews", self.dictionary[@"review_count"]];
-        self.address = [NSString stringWithFormat:@"%@, %@", self.dictionary[@"location"][@"display_address"][0], self.dictionary[@"location"][@"display_address"][1]]; ;
+        self.address = self.dictionary[@"location"][@"display_address"][0];
         self.categories = [NSString stringWithFormat:@"%@", self.dictionary[@"categories"]];
         NSString *imageUrl;
         if (self.dictionary[@"image_url"]) {
@@ -49,13 +49,11 @@
     }
     return self;
 }
-- (CGFloat)extraHeight:(CGFloat)f
+- (CGFloat)heightDifference:(CGSize)size
 {
-    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:17], NSFontAttributeName,
-                                [NSParagraphStyle defaultParagraphStyle], NSParagraphStyleAttributeName,
-                                nil];
-    CGRect r = [self.name boundingRectWithSize:CGSizeMake(137, 10000) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
-    return r.size.height - f;
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:17], NSFontAttributeName, nil];
+    CGRect r = [self.name boundingRectWithSize:CGSizeMake(size.width, 10000) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
+    return r.size.height - size.height;
 }
 
 

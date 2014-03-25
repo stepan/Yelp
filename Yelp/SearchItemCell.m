@@ -67,6 +67,7 @@
 
 - (CGSize)initialLabelSize
 {
+    //only called once at the beginning
     return self.itemNameLabel.frame.size;
 }
 @end

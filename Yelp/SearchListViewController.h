@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FilterOptions.h"
 
 @interface SearchListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
-
+@property (nonatomic, strong) FilterOptions *filterOptions;
 @end

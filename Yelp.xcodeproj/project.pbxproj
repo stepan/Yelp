@@ -27,6 +27,7 @@
 		FDED6B1218DFA7A7009B1DCB /* YelpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FDED6B1118DFA7A7009B1DCB /* YelpClient.m */; };
 		FDED6B1618E11A36009B1DCB /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDED6B1418E11A36009B1DCB /* FilterViewController.m */; };
 		FDED6B1718E11A36009B1DCB /* FilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDED6B1518E11A36009B1DCB /* FilterViewController.xib */; };
+		FDED6B1A18E20019009B1DCB /* FilterOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FDED6B1918E20019009B1DCB /* FilterOptions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,8 @@
 		FDED6B1318E11A36009B1DCB /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
 		FDED6B1418E11A36009B1DCB /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
 		FDED6B1518E11A36009B1DCB /* FilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterViewController.xib; sourceTree = "<group>"; };
+		FDED6B1818E20019009B1DCB /* FilterOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterOptions.h; sourceTree = "<group>"; };
+		FDED6B1918E20019009B1DCB /* FilterOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterOptions.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +186,8 @@
 			children = (
 				FDED6B0D18DBA26B009B1DCB /* SearchItem.h */,
 				FDED6B0E18DBA26B009B1DCB /* SearchItem.m */,
+				FDED6B1818E20019009B1DCB /* FilterOptions.h */,
+				FDED6B1918E20019009B1DCB /* FilterOptions.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -324,6 +329,7 @@
 				FDED6AFF18DB9332009B1DCB /* SearchListViewController.m in Sources */,
 				FDED6B1218DFA7A7009B1DCB /* YelpClient.m in Sources */,
 				FDED6ADB18DB82D7009B1DCB /* AppDelegate.m in Sources */,
+				FDED6B1A18E20019009B1DCB /* FilterOptions.m in Sources */,
 				FDED6B1618E11A36009B1DCB /* FilterViewController.m in Sources */,
 				FDED6B0F18DBA26B009B1DCB /* SearchItem.m in Sources */,
 				FDED6AD718DB82D7009B1DCB /* main.m in Sources */,

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FilterOptions.h"
 
 @interface FilterViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
-
+@property (nonatomic, strong) FilterOptions *filterOptions;
 @end

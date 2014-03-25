@@ -21,8 +21,6 @@ NSString * const kYelpTokenSecret = @"h7Azg-XLhEAnOzcveHMYr2z_N0g";
 @property (nonatomic, strong) NSArray *searchItems;
 @property (nonatomic, strong) YelpClient *client;
 @property (nonatomic, strong) UINavigationController *fnc;
-
-@property (nonatomic, strong) NSString *searchTerm;
 @end
 
 @implementation SearchListViewController
@@ -49,6 +47,7 @@ NSString * const kYelpTokenSecret = @"h7Azg-XLhEAnOzcveHMYr2z_N0g";
 {
     [super viewDidLoad];
     NSLog(@"view did load");
+    self.filterOptions = [[FilterOptions alloc] init];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.separatorInset = UIEdgeInsetsZero;
@@ -76,12 +75,7 @@ NSString * const kYelpTokenSecret = @"h7Azg-XLhEAnOzcveHMYr2z_N0g";
 
 - (void)fetchData
 {
-    if (!self.searchTerm) {
-        self.searchTerm = @"burgers";
-    }
-    //NSLog(@"%@", self.searchTerm);
-    [self.client searchWithTerm:self.searchTerm success:^(AFHTTPRequestOperation *operation, id response) {
-        //NSLog(@"response: %@", response);
+    [self.client searchWithParameters:[self.filterOptions parameters] success:^(AFHTTPRequestOperation *operation, id response) {
         self.searchItems = [SearchItem searchItemsWithObject:response];
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -123,7 +117,7 @@ NSString * const kYelpTokenSecret = @"h7Azg-XLhEAnOzcveHMYr2z_N0g";
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     [searchBar resignFirstResponder];
-    self.searchTerm = searchBar.text;
+    self.filterOptions.searchTerm = searchBar.text;
     [self fetchData];
 }
 
@@ -131,6 +125,8 @@ NSString * const kYelpTokenSecret = @"h7Azg-XLhEAnOzcveHMYr2z_N0g";
 {
     [searchBar resignFirstResponder];
     searchBar.text = @"";
+    self.filterOptions.searchTerm = nil;
+    [self fetchData];
 }
 
 @end

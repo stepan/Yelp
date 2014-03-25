@@ -20,12 +20,7 @@
     return self;
 }
 
-- (AFHTTPRequestOperation *)searchWithTerm:(NSString *)term success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
-    NSMutableDictionary *parameters = [@{@"location" : @"San Francisco"} mutableCopy];
-    if (term) {
-        parameters[@"term"] = term;
-    }
-    
+- (AFHTTPRequestOperation *)searchWithParameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
     return [self GET:@"search" parameters:parameters success:success failure:failure];
 }
 

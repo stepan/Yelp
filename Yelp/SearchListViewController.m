@@ -46,7 +46,6 @@ NSString * const kYelpTokenSecret = @"h7Azg-XLhEAnOzcveHMYr2z_N0g";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"view did load");
     self.filterOptions = [[FilterOptions alloc] init];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -64,12 +63,12 @@ NSString * const kYelpTokenSecret = @"h7Azg-XLhEAnOzcveHMYr2z_N0g";
     self.navigationItem.leftBarButtonItem = filterButton;
     
     FilterViewController *fvc = [[FilterViewController alloc] init];
+    fvc.filterOptions = self.filterOptions;
     self.fnc = [[UINavigationController alloc] initWithRootViewController:fvc];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    NSLog(@"view will appear");
     [self fetchData];
 }
 

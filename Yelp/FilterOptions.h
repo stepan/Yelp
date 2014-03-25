@@ -10,10 +10,11 @@
 
 @interface FilterOptions : NSObject
 @property (nonatomic, strong) NSString *searchTerm;
-@property (nonatomic, strong) NSString *category;
-@property (nonatomic, assign) NSString *sortType;
-@property (nonatomic, strong) NSNumber *radius;
+@property (nonatomic, strong) NSMutableArray *categories;
+@property (nonatomic, assign) NSInteger sortTypeIndex;
+@property (nonatomic, assign) NSInteger radiusIndex;
 @property (nonatomic, assign) BOOL dealOnly;
 @property (nonatomic, strong) NSArray *allOptions;
+
 - (NSDictionary *)parameters;
 @end

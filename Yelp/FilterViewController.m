@@ -10,7 +10,6 @@
 
 @interface FilterViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
 @end
 
 @implementation FilterViewController
@@ -30,10 +29,8 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
-    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(onCancelButtonClick)];
-    self.navigationItem.leftBarButtonItem = cancelButton;
-    UIBarButtonItem *searchButton = [[UIBarButtonItem alloc] initWithTitle:@"Search" style:UIBarButtonItemStyleDone target:self action:@selector(onSearchButtonClick)];
-    self.navigationItem.rightBarButtonItem = searchButton;
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(onDoneButtonClick)];
+    self.navigationItem.leftBarButtonItem = doneButton;
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,12 +39,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)onCancelButtonClick
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)onSearchButtonClick
+- (void)onDoneButtonClick
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -56,30 +48,94 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return section * 2;
+    return [self.filterOptions.allOptions[section][@"rows"] count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return [self.filterOptions.allOptions count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return [NSString stringWithFormat:@"%lu", section];
+    return self.filterOptions.allOptions[section][@"header"];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    cell.textLabel.text = @"hello";
-    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    NSArray *rows = self.filterOptions.allOptions[indexPath.section][@"rows"];
+    cell.textLabel.text = rows[indexPath.row];
+    if (indexPath.section == 2) { //categories
+        NSLog(@"blah %@", self.filterOptions.categories);
+        if ([self.filterOptions.categories containsObject:@(indexPath.row)]) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        else{
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    }
+    else if(indexPath.section == 3){ //deals
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        if (self.filterOptions.dealOnly) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+    }
+    else if(indexPath.section == 0){ //radius
+        if (self.filterOptions.radiusIndex == indexPath.row) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        else{
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    }
+    else{ //sortype
+        if (self.filterOptions.sortTypeIndex == indexPath.row) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        else{
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    }
+
     return cell;
 }
 
 - (void)tableView:tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryNone;
+    if (indexPath.section == 2) { //categories
+        NSLog(@"blah");
+        if (cell.accessoryType == UITableViewCellAccessoryNone) {
+            [self.filterOptions.categories addObject:@(indexPath.row)];
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        else{
+            [self.filterOptions.categories removeObject:@(indexPath.row)];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    else if(indexPath.section == 3){ //deals
+        if (cell.accessoryType == UITableViewCellAccessoryNone) {
+            self.filterOptions.dealOnly = YES;
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        else{
+            self.filterOptions.dealOnly = NO;
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    }
+    else if(indexPath.section == 0){ //radius
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        self.filterOptions.radiusIndex = indexPath.row;
+        [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    else{ //sortType
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        self.filterOptions.sortTypeIndex = indexPath.row;
+        NSLog(@"sort type %ld", self.filterOptions.sortTypeIndex);
+        [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+    }
 }
 
 

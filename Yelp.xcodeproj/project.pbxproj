@@ -28,6 +28,8 @@
 		FDED6B1618E11A36009B1DCB /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDED6B1418E11A36009B1DCB /* FilterViewController.m */; };
 		FDED6B1718E11A36009B1DCB /* FilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDED6B1518E11A36009B1DCB /* FilterViewController.xib */; };
 		FDED6B1A18E20019009B1DCB /* FilterOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = FDED6B1918E20019009B1DCB /* FilterOptions.m */; };
+		FDED6B1E18E22412009B1DCB /* FilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FDED6B1C18E22411009B1DCB /* FilterCell.m */; };
+		FDED6B1F18E22412009B1DCB /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDED6B1D18E22411009B1DCB /* FilterCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,9 @@
 		FDED6B1518E11A36009B1DCB /* FilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterViewController.xib; sourceTree = "<group>"; };
 		FDED6B1818E20019009B1DCB /* FilterOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterOptions.h; sourceTree = "<group>"; };
 		FDED6B1918E20019009B1DCB /* FilterOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterOptions.m; sourceTree = "<group>"; };
+		FDED6B1B18E22411009B1DCB /* FilterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterCell.h; sourceTree = "<group>"; };
+		FDED6B1C18E22411009B1DCB /* FilterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterCell.m; sourceTree = "<group>"; };
+		FDED6B1D18E22411009B1DCB /* FilterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +182,9 @@
 				FDED6B0718DB970F009B1DCB /* SearchItemCell.h */,
 				FDED6B0818DB970F009B1DCB /* SearchItemCell.m */,
 				FDED6B0918DB970F009B1DCB /* SearchItemCell.xib */,
+				FDED6B1B18E22411009B1DCB /* FilterCell.h */,
+				FDED6B1C18E22411009B1DCB /* FilterCell.m */,
+				FDED6B1D18E22411009B1DCB /* FilterCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -275,6 +283,7 @@
 				FDED6B0B18DB970F009B1DCB /* SearchItemCell.xib in Resources */,
 				FDED6B1718E11A36009B1DCB /* FilterViewController.xib in Resources */,
 				FDED6ADD18DB82D7009B1DCB /* Images.xcassets in Resources */,
+				FDED6B1F18E22412009B1DCB /* FilterCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDED6B0A18DB970F009B1DCB /* SearchItemCell.m in Sources */,
+				FDED6B1E18E22412009B1DCB /* FilterCell.m in Sources */,
 				FDED6AFF18DB9332009B1DCB /* SearchListViewController.m in Sources */,
 				FDED6B1218DFA7A7009B1DCB /* YelpClient.m in Sources */,
 				FDED6ADB18DB82D7009B1DCB /* AppDelegate.m in Sources */,

@@ -93,7 +93,6 @@
     NSArray *rows = self.filterOptions.allOptions[indexPath.section][@"rows"];
     cell.textLabel.text = rows[indexPath.row];
     if (indexPath.section == 2) { //categories
-        NSLog(@"blah %@", self.filterOptions.categories);
         if (!self.categoriesExpanded && self.categoriesIntialRows - 1== indexPath.row) {
             cell.textLabel.text = @"See All";
         }

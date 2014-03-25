@@ -38,7 +38,6 @@
         parameters[@"sort"] = [[NSString alloc] initWithFormat:@"%ld", self.sortTypeIndex];
     }
     if ([self.categories count] > 0){
-        NSLog(@"Here");
         NSMutableArray *a = [[NSMutableArray alloc] init];
         for(NSNumber *i in self.categories){
             [a addObject:self.allCategories[self.allOptions[2][@"rows"][[i integerValue]]]];

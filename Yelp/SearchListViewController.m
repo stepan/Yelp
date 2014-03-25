@@ -78,7 +78,7 @@ NSString * const kYelpTokenSecret = @"h7Azg-XLhEAnOzcveHMYr2z_N0g";
         self.searchItems = [SearchItem searchItemsWithObject:response];
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"error: %@", [error description]);
+
     }];
 }
 

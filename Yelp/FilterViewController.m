@@ -10,6 +10,10 @@
 
 @interface FilterViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, assign) BOOL radiusExpanded;
+@property (nonatomic, assign) BOOL sortTypeExpanded;
+@property (nonatomic, assign) BOOL categoriesExpanded;
+@property (nonatomic, assign) NSInteger categoriesIntialRows;
 @end
 
 @implementation FilterViewController
@@ -20,6 +24,7 @@
     if (self) {
         self.title = @"Filters";
     }
+    
     return self;
 }
 
@@ -31,6 +36,7 @@
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(onDoneButtonClick)];
     self.navigationItem.leftBarButtonItem = doneButton;
+    self.categoriesIntialRows = 5;
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,6 +54,27 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (section == 2) { //categories
+        if (self.categoriesExpanded) {
+            return [self.filterOptions.allOptions[section][@"rows"] count];
+        }
+        return self.categoriesIntialRows;
+    }
+    else if(section == 3){ //deals
+        return [self.filterOptions.allOptions[section][@"rows"] count];
+    }
+    else if(section == 0){ //radius
+        if (self.radiusExpanded) {
+            return [self.filterOptions.allOptions[section][@"rows"] count];
+        }
+        return 1;
+    }
+    else{ //sortype
+        if (self.sortTypeExpanded) {
+            return [self.filterOptions.allOptions[section][@"rows"] count];
+        }
+        return 1;
+    }
     return [self.filterOptions.allOptions[section][@"rows"] count];
 }
 
@@ -67,6 +94,12 @@
     cell.textLabel.text = rows[indexPath.row];
     if (indexPath.section == 2) { //categories
         NSLog(@"blah %@", self.filterOptions.categories);
+        if (!self.categoriesExpanded && self.categoriesIntialRows - 1== indexPath.row) {
+            cell.textLabel.text = @"See All";
+        }
+        else{
+            cell.textLabel.text = rows[indexPath.row];
+        }
         if ([self.filterOptions.categories containsObject:@(indexPath.row)]) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
@@ -81,19 +114,30 @@
         }
     }
     else if(indexPath.section == 0){ //radius
-        if (self.filterOptions.radiusIndex == indexPath.row) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        if (self.radiusExpanded) {
+            if (self.filterOptions.radiusIndex == indexPath.row) {
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
+            else{
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            }
         }
         else{
-            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.textLabel.text = self.filterOptions.allOptions[0][@"rows"][self.filterOptions.radiusIndex];
         }
+
     }
     else{ //sortype
-        if (self.filterOptions.sortTypeIndex == indexPath.row) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        if (self.sortTypeExpanded) {
+            if (self.filterOptions.sortTypeIndex == indexPath.row) {
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
+            else{
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            }
         }
         else{
-            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.textLabel.text = self.filterOptions.allOptions[1][@"rows"][self.filterOptions.sortTypeIndex];
         }
     }
 
@@ -104,14 +148,18 @@
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if (indexPath.section == 2) { //categories
-        NSLog(@"blah");
-        if (cell.accessoryType == UITableViewCellAccessoryNone) {
-            [self.filterOptions.categories addObject:@(indexPath.row)];
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        if (!self.categoriesExpanded && self.categoriesIntialRows - 1== indexPath.row) {
+            self.categoriesExpanded = YES;
         }
         else{
-            [self.filterOptions.categories removeObject:@(indexPath.row)];
-            cell.accessoryType = UITableViewCellAccessoryNone;
+            if (cell.accessoryType == UITableViewCellAccessoryNone) {
+                [self.filterOptions.categories addObject:@(indexPath.row)];
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
+            else{
+                [self.filterOptions.categories removeObject:@(indexPath.row)];
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            }
         }
         [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
     }
@@ -126,14 +174,25 @@
         }
     }
     else if(indexPath.section == 0){ //radius
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        self.filterOptions.radiusIndex = indexPath.row;
+        if (self.radiusExpanded) {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            self.filterOptions.radiusIndex = indexPath.row;
+            self.radiusExpanded = NO;
+        }
+        else {
+            self.radiusExpanded = YES;
+        }
         [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
     }
     else{ //sortType
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        self.filterOptions.sortTypeIndex = indexPath.row;
-        NSLog(@"sort type %ld", self.filterOptions.sortTypeIndex);
+        if (self.sortTypeExpanded) {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            self.filterOptions.sortTypeIndex = indexPath.row;
+            self.sortTypeExpanded = NO;
+        }
+        else {
+            self.sortTypeExpanded = YES;
+        }
         [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
     }
 }

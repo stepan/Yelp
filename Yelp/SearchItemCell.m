@@ -58,9 +58,7 @@
 - (void)styleCell
 {
     self.itemNameLabel.text = self.searchItem.name;
-    self.itemDistanceLabel.text = self.searchItem.distance;
     self.itemNumberOfReviewsLabel.text = self.searchItem.numberOfReviews;
-    self.itemPriceRangeLabel.text = self.searchItem.priceRange;
     self.itemAddressLabel.text = self.searchItem.address;
     self.itemCategoriesLabel.text = self.searchItem.categories;
     [self.itemImage setImageWithURL:self.searchItem.imageUrl];

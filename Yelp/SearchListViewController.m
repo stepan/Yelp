@@ -8,6 +8,7 @@
 #import "SearchListViewController.h"
 #import "SearchItemCell.h"
 #import "YelpClient.h"
+#import "FilterViewController.h"
 
 NSString * const kYelpConsumerKey = @"g7t7dDPZsBKhktjRXBQf_w";
 NSString * const kYelpConsumerSecret = @"RUpXsOoZZxbEc7XwehDeFmQRnJk";
@@ -19,7 +20,9 @@ NSString * const kYelpTokenSecret = @"h7Azg-XLhEAnOzcveHMYr2z_N0g";
 @property (nonatomic, strong) SearchItemCell *prototypeCell;
 @property (nonatomic, strong) NSArray *searchItems;
 @property (nonatomic, strong) YelpClient *client;
+@property (nonatomic, strong) UINavigationController *fnc;
 
+@property (nonatomic, strong) NSString *searchTerm;
 @end
 
 @implementation SearchListViewController
@@ -45,29 +48,39 @@ NSString * const kYelpTokenSecret = @"h7Azg-XLhEAnOzcveHMYr2z_N0g";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"view did load");
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.separatorInset = UIEdgeInsetsZero;
     [self.tableView registerNib:[UINib nibWithNibName:@"SearchItemCell" bundle:nil] forCellReuseIdentifier:[SearchItemCell cellIdentifier]];
-    //self.searchItems = @[@"This is a long titles", @"short title", @"This might be a really long title", @"This might be a really long title This might be a really long title"];
     
-    
-	UISearchBar *searchBar = [[UISearchBar alloc]
-                                 initWithFrame:CGRectMake(0.0f,0.0f,320.0f,0.0f)];
+	UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0.0f,0.0f,320.0f,0.0f)];
 	[searchBar sizeToFit];
+    searchBar.delegate = self;
+    [searchBar setShowsCancelButton:YES];
+    searchBar.barStyle = UIBarStyleBlack;
 	self.navigationItem.titleView = searchBar;
-	self.navigationItem.titleView.autoresizingMask = UIViewAutoresizingNone;
     
-    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStyleBordered target:nil action:nil];
-    UIBarButtonItem *searchButton = [[UIBarButtonItem alloc] initWithTitle:@"Search" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStyleDone target:self action:@selector(onFilterButtonClick)];
     self.navigationItem.leftBarButtonItem = filterButton;
-    self.navigationItem.rightBarButtonItem = searchButton;
+    
+    FilterViewController *fvc = [[FilterViewController alloc] init];
+    self.fnc = [[UINavigationController alloc] initWithRootViewController:fvc];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    NSLog(@"view will appear");
     [self fetchData];
 }
 
 - (void)fetchData
 {
-    [self.client searchWithTerm:@"Thai" success:^(AFHTTPRequestOperation *operation, id response) {
+    if (!self.searchTerm) {
+        self.searchTerm = @"burgers";
+    }
+    //NSLog(@"%@", self.searchTerm);
+    [self.client searchWithTerm:self.searchTerm success:^(AFHTTPRequestOperation *operation, id response) {
         //NSLog(@"response: %@", response);
         self.searchItems = [SearchItem searchItemsWithObject:response];
         [self.tableView reloadData];
@@ -80,6 +93,11 @@ NSString * const kYelpTokenSecret = @"h7Azg-XLhEAnOzcveHMYr2z_N0g";
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)onFilterButtonClick
+{
+    [self presentViewController:self.fnc animated:YES completion:nil];
 }
 
 #pragma mark - Table view methods
@@ -100,4 +118,19 @@ NSString * const kYelpTokenSecret = @"h7Azg-XLhEAnOzcveHMYr2z_N0g";
     SearchItem *item = self.searchItems[indexPath.row];
     return self.prototypeCell.frame.size.height + ceil([item extraHeight:21]);
 }
+
+#pragma mark - Search Bar methods
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [searchBar resignFirstResponder];
+    self.searchTerm = searchBar.text;
+    [self fetchData];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+    searchBar.text = @"";
+}
+
 @end

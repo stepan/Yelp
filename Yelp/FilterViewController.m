@@ -9,6 +9,7 @@
 #import "FilterViewController.h"
 
 @interface FilterViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -26,6 +27,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(onCancelButtonClick)];
     self.navigationItem.leftBarButtonItem = cancelButton;
     UIBarButtonItem *searchButton = [[UIBarButtonItem alloc] initWithTitle:@"Search" style:UIBarButtonItemStyleDone target:self action:@selector(onSearchButtonClick)];
@@ -47,5 +51,36 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+#pragma mark - Table view methods
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return section * 2;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 3;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [NSString stringWithFormat:@"%lu", section];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    cell.textLabel.text = @"hello";
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    return cell;
+}
+
+- (void)tableView:tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryNone;
+}
+
 
 @end
